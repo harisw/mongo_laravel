@@ -79,13 +79,17 @@ return [
         ],
         'mongodb' => array(
             'driver' => 'mongodb',
-            'host' => env('DB_HOST', 'localhost'),
+            'host' => env('DB_HOST', 'johnycluster-shard-00-00-7cae2.mongodb.net:27017,johnycluster-shard-00-01-7cae2.mongodb.net:27017,johnycluster-shard-00-02-7cae2.mongodb.net:27017ssl=true&replicaSet=johnyCluster-shard-0&authSource=admin&retryWrites=true'),
             'port' => env('DB_PORT', 27017),
             'database' => env('DB_DATABASE', 'postMongo'),
-            'username' => env('DB_USERNAME', 'laravel'),
-            'password' => env('DB_PASSWORD', 'aloeveranda'),
+            'username' => env('DB_USERNAME', 'har'),
+            'password' => env('DB_PASSWORD', '1'),
             'options' => array(
-                'db' => 'admin' // sets the authentication database required by mongo 3
+                'ssl' => 'true',
+                'replicaSet' => 'johnyCluster-shard-0',
+                'authSource' => 'admin',
+                'retryWrites' => 'true',
+                // 'db' => 'admin' // sets the authentication database required by mongo 3
             )
         ),
 
