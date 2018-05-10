@@ -16,6 +16,7 @@ Route::get('/', function () {
 });
 Route::post('zipcode/edit/{id}', 'ZipController@update');
 Route::post('zipcode/delete/{id}', 'ZipController@destroy');
+Route::get('zipcode/search', 'ZipController@search');
 Route::resource('zipcode', 'ZipController')->names([
 	'update' => 'zipcode.update',
 ]);

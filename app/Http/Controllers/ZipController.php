@@ -29,6 +29,11 @@ class ZipController extends Controller
         return view('create');
     }
 
+    public function search(Request $req)
+    {
+        $data['zipcode'] = ZipCode::where('city', 'LIKE', '%'.$req['keyword'].'%')->orWhere('state', 'LIKE', '%'.$req['keyword'].'%')->paginate(500);
+        return view('result', $data);
+    }
     /**
      * Store a newly created resource in storage.
      *
