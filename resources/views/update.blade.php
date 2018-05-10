@@ -120,39 +120,39 @@
                   </div>
                   <div class="x_content">
                     <br />
-                    <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="{{url('zipcode')}}" method="POST">
+                    <form action="{{url('zipcode/edit/'.$zipCode['_id'])}}" method="POST" class="form-horizontal form-label-left">       
                       {{ csrf_field() }}
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">City Name <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" name="city" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
+                          <input type="text" name="city" id="first-name" required="required" class="form-control col-md-7 col-xs-12" value="{{$zipCode['city']}}">
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Longitude <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="number" id="last-name" name="longitude" required="required" class="form-control col-md-7 col-xs-12">
+                          <input type="number" id="last-name" value="{{$zipCode['loc'][0]}}" name="longitude" required="required" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
                       <div class="form-group">
                         <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Latitude</label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="middle-name" class="form-control col-md-7 col-xs-12" type="number" name="latitude">
+                          <input id="middle-name" class="form-control col-md-7 col-xs-12" value="{{$zipCode['loc'][1]}}" type="number" name="latitude">
                         </div>
                       </div>
                       <div class="form-group">
                         <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Population</label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="middle-name" class="form-control col-md-7 col-xs-12" type="number" name="population">
+                          <input id="middle-name" value="{{$zipCode['pop']}}" class="form-control col-md-7 col-xs-12" type="number" name="population">
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">State <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" name="state" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
+                          <input type="text" name="state" id="first-name" value="{{$zipCode['state']}}" required="required" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
                       <div class="ln_solid"></div>

@@ -15,7 +15,7 @@ class ZipController extends Controller
      */
     public function index()
     {
-        $data['zipcode'] = DB::collection('postmongo')->get();
+        $data['zipcode'] = DB::collection('postmongo')->paginate(500);
         return view('index', $data);
     }
 
@@ -37,7 +37,18 @@ class ZipController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $newzip = new ZipCode;
+            $newzip->city = $request['city'];
+            $newzip->loc = [$request['longitude'], $request['latitude']];
+            $newzip->pop = $request['population'];
+            $newzip->state = $request['state'];
+            $newzip->save();   
+        } catch (Exception $e) {
+            echo $e;
+        }
+
+        return redirect('zipcode');
     }
 
     /**
@@ -59,7 +70,8 @@ class ZipController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data['zipCode'] = ZipCode::find($id);
+        return view('update', $data);
     }
 
     /**
@@ -71,7 +83,14 @@ class ZipController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $newzip = ZipCode::find($id);
+        $newzip->city = $request['city'];
+        $newzip->loc = [$request['longitude'], $request['latitude']];
+        $newzip->pop = $request['population'];
+        $newzip->state = $request['state'];
+        $newzip->save();
+
+        return redirect('zipcode');
     }
 
     /**
@@ -82,6 +101,7 @@ class ZipController extends Controller
      */
     public function destroy($id)
     {
-        //
+        ZipCode::find($id)->delete();
+        return redirect('zipcode');
     }
 }

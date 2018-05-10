@@ -14,4 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::resource('zipcode', 'ZipController');
+Route::post('zipcode/edit/{id}', 'ZipController@update');
+Route::post('zipcode/delete/{id}', 'ZipController@destroy');
+Route::resource('zipcode', 'ZipController')->names([
+	'update' => 'zipcode.update',
+]);

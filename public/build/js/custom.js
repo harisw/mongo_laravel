@@ -2529,9 +2529,7 @@ if (typeof NProgress != 'undefined') {
 				  };
 				}();
 
-				$('#datatable').dataTable({
-					"pageLength": 30
-				});
+				$('#datatable').dataTable();
 
 				$('#datatable-keytable').DataTable({
 				  keys: true

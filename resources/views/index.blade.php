@@ -321,6 +321,7 @@
                     <p class="text-muted font-13 m-b-30">
                       DataTables has most features enabled by default, so all you need to do to use it with your own tables is to call the construction function: <code>$().DataTable();</code>
                     </p>
+                    <a href="{{url('zipcode/create')}}"><button type="button" class="btn btn-success">Success</button></a>
                     <table id="datatable" class="table table-striped table-bordered">
                       <thead>
                         <tr>
@@ -330,6 +331,8 @@
                           <th>Latitude</th>
                           <th>Population</th>
                           <th>State</th>
+                          <th>Action</th>
+                          <th>Action</th>
                         </tr>
                       </thead>
 
@@ -342,6 +345,9 @@
 	                          <td>{{$row['loc'][1]}}</td>
 	                          <td>{{$row['pop']}}</td>
 	                          <td>{{$row['state']}}</td>
+	                          <td><a href="{{url('zipcode/'.$row['_id'].'/edit')}}" class="btn btn-success">Edit</a></td>
+	                          <td><form action="{{url('zipcode/delete/'.$row['_id'])}}" method="POST">{{csrf_field()}}<button class="btn btn-success" type="submit">Delete</button></td>
+	                        	</form>
 	                        </tr>
 	                    @endforeach
                       </tbody>
@@ -349,7 +355,7 @@
                   </div>
                 </div>
               </div>
-
+              {{$zipcode->links()}}
               
             </div>
           </div>
