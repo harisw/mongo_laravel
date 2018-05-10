@@ -334,15 +334,16 @@
                       </thead>
 
                       <tbody>
-                        <tr>
-                          <td>Tiger Nixon</td>
-                          <td>System Architect</td>
-                          <td>Edinburgh</td>
-                          <td>61</td>
-                          <td>2011/04/25</td>
-                          <td>$320,800</td>
-                        </tr>
-
+                      	@foreach($zipcode as $row)
+	                        <tr>
+	                          <td>{{$row['_id']}}</td>
+	                          <td>{{$row['city']}}</td>
+	                          <td>{{$row['loc'][0]}}</td>
+	                          <td>{{$row['loc'][1]}}</td>
+	                          <td>{{$row['pop']}}</td>
+	                          <td>{{$row['state']}}</td>
+	                        </tr>
+	                    @endforeach
                       </tbody>
                     </table>
                   </div>
